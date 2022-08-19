@@ -1,2 +1,2 @@
 # desafio-ford
-Final project for IT formation (focus in Front-end) curse by FORD
+Final project for IT formation (focus in Front-end) course by FORD
