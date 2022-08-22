@@ -1,4 +1,7 @@
 .po-menu-item-selected {
-    background-color: #dadedf;
     border-left: 3px solid #144067!important;
+}
+
+.po-menu-item-selected:hover {
+    border-left: 3px solid #3a96cb!important;
 }
