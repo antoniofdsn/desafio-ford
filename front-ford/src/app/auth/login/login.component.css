@@ -1,0 +1,25 @@
+.wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+    grid-column-gap: 10px;
+    align-items: center;
+ }
+
+.wrapper img {
+    width: 100%;
+    opacity: 60%;
+}
+
+@media screen and (max-width: 1024px) {
+    .wrapper {
+        display: grid;
+        grid-template-columns: repeat(1, 100%);
+        gap: 20px;
+        align-items: center;
+     }
+
+     .wrapper img {
+        width: 100%;
+        opacity: 60%;
+    }
+}

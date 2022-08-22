@@ -1,0 +1,35 @@
+header {
+    margin-bottom: 50px;
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+    color: #1075af;
+}
+
+.container-img {
+    display: flex;
+    justify-content: center;
+}
+
+.card-title {
+    color: #3a96cb;
+}
+
+img {
+    width: 60%;
+    margin-top: 25px;
+}
+
+@media screen and (max-width: 1024px) {
+    .value-card {
+        width: 50%;
+    }
+}
+
+.no-data {
+    display: flex;
+    justify-content: center;
+    color: red;
+}

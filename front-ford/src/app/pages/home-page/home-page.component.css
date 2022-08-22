@@ -1,0 +1,19 @@
+.ranger {
+    height: 100%;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    background-image: url(../../../assets/img/cars/ranger.png);
+    background-repeat:no-repeat;
+    background-position: center center;
+}
+
+@media screen and (max-width: 1024px) {
+    .ranger {
+        background-size: 117%;
+    }
+}
+
+img {
+    position: absolute;
+}

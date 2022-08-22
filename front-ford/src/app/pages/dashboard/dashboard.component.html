@@ -1,0 +1,62 @@
+<po-page-default>
+  <header>
+    <h1>Dasboard FORD</h1>
+  </header>
+  <body>
+    <div class="td-page-wrapper" *ngIf="vehicles; else elseBlock">
+      <div class="po-row">
+        <div class="po-md-3 value-card">
+          <div class="card mb-3" style="max-width: 18rem;">
+            <div class="card-header">Veículo</div>
+            <div class="card-body text-dark">
+              <select (change)="selectVehicle($event.target.value); setCardValues($event.target.value)" class="custom-select">
+                <option value="" disabled selected hidden>Selecione um veículo</option>
+                <option *ngFor="let vehicle of vehicles; let i = index" [value]="vehicles[i].id">
+                  {{ vehicles[i].vehicle }}
+                </option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="po-md-3 value-card">
+          <div class="card bg-light mb-3" style="max-width: 18rem;">
+            <div class="card-header">Total de vendas</div>
+            <div class="card-body">
+              <h5 class="card-title">{{totalSales}}</h5>
+              <p class="card-text">Unid.</p>
+            </div>
+          </div>
+        </div>
+        <div class="po-md-3 value-card">
+          <div class="card bg-light mb-3" style="max-width: 18rem;">
+            <div class="card-header">Conectados</div>
+            <div class="card-body">
+              <h5 class="card-title">{{connected}}</h5>
+              <p class="card-text">Unid.</p>
+            </div>
+          </div>
+        </div>
+        <div class="po-md-3 value-card">
+          <div class="card bg-light mb-3" style="max-width: 18rem;">
+            <div class="card-header">Update Software</div>
+            <div class="card-body">
+              <h5 class="card-title">{{softwareUpdates}}</h5>
+              <p class="card-text">Unid.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="po-row container-img">
+        <img
+        class="img-fluid d-sm"
+        [src]="vehicleImg"
+        alt=""
+        />
+      </div>
+      <div class="po-row">
+
+      </div>
+    </div>
+  </body>
+  <ng-template #elseBlock><p class="no-data">Dados não encontrados</p></ng-template>
+</po-page-default>
