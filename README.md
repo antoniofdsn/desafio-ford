@@ -12,9 +12,9 @@ The front-end stack used was:
 
     - Angular v10.0.7
 
-    - bootstrap
+    - bootstrap v4.5.3
 
-    - PO-UI
+    - PO-UI v3.0.0
 
     - TS
 
