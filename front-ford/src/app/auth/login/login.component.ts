@@ -16,6 +16,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class LoginComponent implements OnInit, OnDestroy {
   public isLoading: boolean;
   public logo: string;
+  public ranger: string;
   public secondaryLogo: string;
   private subs = new Subscription();
 
@@ -24,7 +25,8 @@ export class LoginComponent implements OnInit, OnDestroy {
     private authService: AuthorizationService,
     private messageService: MessagesService
   ) {
-    this.logo = `../../../${environment.imagesPath}/img/logo/ford.png`;
+    this.logo = `${environment.imagesPath}/img/logo/ford.png`;
+    this.ranger = `${environment.imagesPath}/img/cars/ranger.png`;
   }
 
   ngOnInit() {
