@@ -2,7 +2,7 @@
 
 ### Final project for IT formation (focus in Front-end) course by FORD
 
-Project carried out in order to solve a problem: "The company FORD is expanding its system to assist its management team in making strategic decisions";
+Project carried out in order to solve the problem: "The FORD company is expanding its system to assist its management team in making strategic decisions";
 It is requested to build a dashboard that presents information about its vehicles. This information is made available by a back-end in API rest format.
 
 ### The Challenge:
