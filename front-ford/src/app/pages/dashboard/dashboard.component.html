@@ -9,7 +9,7 @@
           <div class="card mb-3" style="max-width: 18rem;">
             <div class="card-header">Veículo</div>
             <div class="card-body text-dark">
-              <select (change)="selectVehicle($event.target.value); setCardValues($event.target.value)" class="custom-select">
+              <select (change)="selectVehicle($event.target.value); setCardValues($event.target.value); setVehicleData($event.target.value)" class="custom-select">
                 <option value="" disabled selected hidden>Selecione um veículo</option>
                 <option *ngFor="let vehicle of vehicles; let i = index" [value]="vehicles[i].id">
                   {{ vehicles[i].vehicle }}
@@ -53,8 +53,13 @@
         alt=""
         />
       </div>
-      <div class="po-row">
-
+      <div class="po-row dy-table">
+        <po-table
+          [p-columns]="columns"
+          [p-items]="items"
+          [p-literals]="customLiterals"
+        >
+        </po-table>
       </div>
     </div>
   </body>
