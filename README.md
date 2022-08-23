@@ -21,3 +21,6 @@ The front-end stack used was:
     - HTML5
 
     - CSS3
+
+
+###### * For more information and how the project works read the README.md of "/front-ford"
