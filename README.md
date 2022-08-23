@@ -24,3 +24,4 @@ The front-end stack used was:
 
 
 ###### * For more information and how the project works read the README.md of "/front-ford"
+###### + To see the project in action go to "/videos"
