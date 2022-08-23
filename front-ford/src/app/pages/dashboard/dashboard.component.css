@@ -28,12 +28,17 @@ img {
     }
 
     img {
-        width: 70%;
+        width: 80%;
         margin-top: 20px;
     }
 
     .container-data {
         margin-top: 20px;
+    }
+
+    .dy-table {
+        width: 365px;
+        display: inline-block;
     }
 }
 

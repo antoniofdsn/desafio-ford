@@ -53,8 +53,8 @@
         onerror="this.src = '../../../assets/img/logo/ford.png'"
         />
       </div>
-      <div class="container-data">
-        <div class="po-xl-2 po-lg-2 po-md-2 po-sm-6">
+      <div class="po-row container-data">
+        <div class="po-xl-2 po-lg-2 po-md-4 po-sm-7">
           <po-input p-label="Buscar pelo Código do Veículo:" [formControl]="vinInput"></po-input>
         </div>
         <div class="po-row dy-table" *ngIf="vehiclesData | async as vehiclesData">
