@@ -1,6 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { PoTableLiterals } from '@po-ui/ng-components';
-import { Subscription } from 'rxjs';
+import { merge, Subscription } from 'rxjs';
+import { switchMap, map, filter, distinctUntilChanged } from 'rxjs/operators';
 import { DashboardService } from './dashboard.service';
 import { vehicles } from './models/vehicle';
 import { vehicleData, vehiclesData } from './models/vehicleData';
@@ -18,7 +20,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   connected: string | number;
   softwareUpdates: string | number;
   $index: number;
-  vehiclesData: vehiclesData;
+  vehiclesModelData: vehiclesData;
   items: [vehicleData];
   columns: Array<object> = [
     {property:'vin', label:'Código-Vin'},
@@ -30,11 +32,20 @@ export class DashboardComponent implements OnInit, OnDestroy {
   ];
   vehicleData: any;
   private vehiclesSubscripition: Subscription;
-  private vehiclesDataSubscripition: Subscription;
+  private vehiclesModelDataSubscripition: Subscription;
 
   customLiterals: PoTableLiterals = {
-    noData: 'Selecione um Veículo ou pesquise um Código Vin'
+    noData: 'Selecione um veículo ou digite um código-vin válido'
   };
+  vinInput = new FormControl();
+  noVehiclesData$ = [{}];
+  filterByInput$ = this.vinInput.valueChanges.pipe(
+    filter((typedVin) => typedVin.length >= 17),
+    distinctUntilChanged(),
+    switchMap((typedVin) => this.DashboardService.getVehiclesData(typedVin)),
+    map((selectVin)=> this.items = selectVin),
+    );
+  vehiclesData = merge(this.noVehiclesData$, this.filterByInput$);
 
   constructor(private DashboardService: DashboardService) {}
 
@@ -42,14 +53,14 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.vehiclesSubscripition = this.DashboardService.getVehicles().subscribe((vehicles) => {
       this.vehicles = vehicles;
     });
-    this.vehiclesDataSubscripition = this.DashboardService.getVehiclesData().subscribe((data) => {
-      this.vehiclesData = data;
+    this.vehiclesModelDataSubscripition = this.DashboardService.getVehiclesData().subscribe((data) => {
+      this.vehiclesModelData = data;
     });
   }
 
   ngOnDestroy(): void {
     this.vehiclesSubscripition.unsubscribe();
-    this.vehiclesDataSubscripition.unsubscribe();
+    this.vehiclesModelDataSubscripition.unsubscribe();
   }
 
   selectVehicle(id: number) {
@@ -69,9 +80,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   setVehicleData(id: number) {
-    id = id - 1;
-    this.vehicleData = this.vehiclesData[id];
-    this.items = [this.vehicleData];
+    this.items = [this.vehiclesModelData[id]];
   }
 
 }

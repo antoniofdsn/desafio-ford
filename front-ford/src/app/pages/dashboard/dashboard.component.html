@@ -3,7 +3,7 @@
     <h1>Dasboard FORD</h1>
   </header>
   <body>
-    <div class="td-page-wrapper" *ngIf="vehicles; else elseBlock">
+    <div class="td-page-wrapper" *ngIf="vehicles && vehiclesModelData; else elseBlock">
       <div class="po-row">
         <div class="po-md-3 value-card">
           <div class="card mb-3" style="max-width: 18rem;">
@@ -50,16 +50,21 @@
         <img
         class="img-fluid d-sm"
         [src]="vehicleImg"
-        alt=""
+        onerror="this.src = '../../../assets/img/logo/ford.png'"
         />
       </div>
-      <div class="po-row dy-table">
-        <po-table
-          [p-columns]="columns"
-          [p-items]="items"
-          [p-literals]="customLiterals"
-        >
-        </po-table>
+      <div class="container-data">
+        <div class="po-xl-2 po-lg-2 po-md-2 po-sm-6">
+          <po-input p-label="Buscar pelo Código do Veículo:" [formControl]="vinInput"></po-input>
+        </div>
+        <div class="po-row dy-table" *ngIf="vehiclesData | async as vehiclesData">
+          <po-table
+            [p-columns]="columns"
+            [p-items]="items"
+            [p-literals]="customLiterals"
+          >
+          </po-table>
+        </div>
       </div>
     </div>
   </body>

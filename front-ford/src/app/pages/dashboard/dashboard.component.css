@@ -18,13 +18,22 @@ h1 {
 }
 
 img {
-    width: 60%;
+    width: 40%;
     margin-top: 25px;
 }
 
 @media screen and (max-width: 1024px) {
     .value-card {
         width: 50%;
+    }
+
+    img {
+        width: 70%;
+        margin-top: 20px;
+    }
+
+    .container-data {
+        margin-top: 20px;
     }
 }
 

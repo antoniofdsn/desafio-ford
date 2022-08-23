@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { map, pluck } from 'rxjs/operators';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { pluck } from 'rxjs/operators';
 import { vehiclesAPI } from './models/vehicle';
 import { environment } from 'src/environments/environment';
 
@@ -16,15 +16,25 @@ export class DashboardService {
     return this.httpClient
       .get<vehiclesAPI>(`${API}/vehicle`)
       .pipe(
-        map((api) => api.vehicles)
+        pluck('vehicles')
       );
   }
 
-  getVehiclesData() {
+  getVehiclesModelData() {
     return this.httpClient
-      .get<any>(`${API}/vehicleData`)
+      .get<vehiclesAPI>(`${API}/vehicle`)
       .pipe(
-        pluck('vehicleData'),
+        pluck('vehicleData')
       );
   }
+
+  getVehiclesData(typedVin?: string) {
+    const params = typedVin ? new HttpParams().append('valor', typedVin) : undefined;
+    return this.httpClient
+      .get<any>(`${API}/vehicleData`, { params })
+      .pipe(
+        pluck('vehicleData')
+      );
+  }
+
 }
