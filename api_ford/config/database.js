@@ -30,6 +30,15 @@ INSERT INTO user (
 ) SELECT 'diogo', 'diogo@ford.com', '1234', 'Diogo' WHERE NOT EXISTS (SELECT * FROM user WHERE user_name = 'diogo')
 `;
 
+const INSERT_DEFAULT_USER_3 = `
+INSERT INTO user (
+    user_name,
+    user_email,
+    user_password,
+    user_full_name
+) SELECT 'Antonio Ferreira', 'antonio@ford.com', '123', 'Antonio Ferreira' WHERE NOT EXISTS (SELECT * FROM user WHERE user_name = 'Antonio Ferreira')
+`;
+
 const VEHICLE_SCHEMA = `
 CREATE TABLE IF NOT EXISTS VEHICLE (
     vehicle_id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -153,6 +162,7 @@ db.serialize(() => {
   db.run(USER_SCHEMA);
   db.run(INSERT_DEFAULT_USER_1);
   db.run(INSERT_DEFAULT_USER_2);
+  db.run(INSERT_DEFAULT_USER_3);
   db.run(VEHICLE_SCHEMA);
   db.run(INSERT_VEHICLE_1);
   db.run(INSERT_VEHICLE_2);
