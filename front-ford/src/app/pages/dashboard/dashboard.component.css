@@ -57,3 +57,7 @@ img {
     bottom:0px;
     width:100%;
 }
+
+po-table {
+    width: -webkit-fill-available;
+}
